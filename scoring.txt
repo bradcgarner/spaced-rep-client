@@ -1,11 +1,7 @@
-scale:
-1 is worst
-10 is best
+default value = 1
 
-default value = 0
-
-correct answer + 2 max 10
-incorrect answer - 1 min 0
+correct answer: m * 2
+incorrect answer: m = 1 
 
 sort order
 default = random? alphabetical?
@@ -13,6 +9,9 @@ default = random? alphabetical?
 data structure:
 singly linked list
 [
-  { word1: { english: word2,
-   }
+  { key: 
+    { 
+      value: word2,
+      next: 
+    }
 ]
