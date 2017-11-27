@@ -20,7 +20,7 @@ export const getAllUsers = () => ({
 });
 
 export const testLoadAllUsers = () => dispatch => {
-  const url = `${REACT_APP_BASE_URL}/api/auth/login`;
+  const url = `${REACT_APP_BASE_URL}/api/users`;
   const headers = {
     "x-requested-with": "xhr"
   }; 
@@ -39,7 +39,7 @@ export const testLoadAllUsers = () => dispatch => {
     return res.json();
   })
   .then(user=>{
-    dispatch(loadUser(user));    
+    dispatch(loadUser(user[0]));    
     console.log('user returned at login', user);    
   })
   .catch(error => {
