@@ -32,7 +32,6 @@ export const testLoadAllUsers = () => dispatch => {
   console.log('init', init);
   return fetch(url, init)    
   .then(res=>{
-    console.log(res);
     if (!res.ok) { 
       return Promise.reject(res.statusText);
     }

@@ -1,0 +1,18 @@
+scale:
+1 is worst
+10 is best
+
+default value = 0
+
+correct answer + 2 max 10
+incorrect answer - 1 min 0
+
+sort order
+default = random? alphabetical?
+
+data structure:
+singly linked list
+[
+  { word1: { english: word2,
+   }
+]
