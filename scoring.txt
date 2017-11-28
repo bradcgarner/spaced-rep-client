@@ -15,3 +15,30 @@ singly linked list
       next: 
     }
 ]
+
+Landing page = Is main app with headers for login/sign-up. 
+text + 
+Start button 
+
+
+Users Table
+
+firstName
+lastName
+username
+password
+id
+progress
+question 
+{
+  questionId: score
+  questionId: score
+}
+
+Questions
+
+
+{question: "Hello?", 
+answer: "goodbye"},
+{question: "hihi",
+answer: "byebye"}

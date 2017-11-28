@@ -1,36 +1,18 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import * as actionsUser from './actions/users'
-import { connect} from 'react-redux';
+import LandingPage from './components/landing-page.js'
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
-class App extends Component {
 
-  // displayUsers () {
-  //   this.props.dispatch(actionsUser.getAllUsers());
-  // }
-  
-  componentDidMount(){
-    this.props.dispatch(actionsUser.testLoadAllUsers())
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Vilkommen to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+export default function Layout() {
+  return (
+    <Router>
+      <div className="router">
+        <Route path="/" component={LandingPage}/>
       </div>
-    );
-  }
+    </Router>
+  )
 }
 
-export const mapStateToProps = state => ({
-  users: state.users
-})
 
-export default connect(mapStateToProps)(App);
