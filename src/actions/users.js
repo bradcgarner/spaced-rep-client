@@ -45,3 +45,8 @@ export const testLoadAllUsers = () => dispatch => {
    console.log(error);
   })
 }
+
+export const GO_TO_SIGNUP = 'GO_TO_SIGNUP';
+export const goToSignup = () => ({
+  type: GO_TO_SIGNUP
+})

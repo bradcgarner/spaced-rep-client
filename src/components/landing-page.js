@@ -5,6 +5,10 @@ import * as actions from '../actions/users.js'
 
 export class LandingPage extends React.Component {
 
+onClick(){
+  this.props.dispatch(actions.goToSignup)
+}
+
   render() {
     return (
       <div>
@@ -12,7 +16,7 @@ export class LandingPage extends React.Component {
         <button>Get Started</button>
         <ul>
           <li>
-            Sign Up
+            <p onClick={() => onClick()}>Sign Up</p>
            </li>
           <li>
             Login
