@@ -14,6 +14,12 @@ export class LoginPage extends React.Component {
     const {username, password} = values;
     const user = {username, password}
     this.props.dispatch(actionsUsers.login(user))
+    .then(()=>{
+      console.log('view',this.props.view);
+      if ( this.props.display.view === 'questionsPage') {
+        this.props.history.push('/questions');      
+      }
+    });
     console.log('user to log in',user);
   }
 
@@ -28,11 +34,11 @@ export class LoginPage extends React.Component {
       </div>
     )
   }
-
 }
 
 const mapStateToProps = state => ({
-  view: state.view
+  display: state.display,
+  users: state.users
 });
 
 export default compose(

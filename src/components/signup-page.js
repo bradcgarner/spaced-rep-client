@@ -14,6 +14,7 @@ export class SignupPage extends React.Component {
     const {username, password, firstName, lastName} = values;
     const user = {username, password, firstName, lastName}
     this.props.dispatch(actionsUsers.registerUser(user))
+    this.props.history.push('/login');    
     console.log(user);
   }
 
