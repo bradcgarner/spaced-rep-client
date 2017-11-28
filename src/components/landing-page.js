@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actionsDisplay from '../actions/display'
-import * as actionsUser from '../actions/user'
+import * as actionsUser from '../actions/users'
 import {Link} from 'react-router-dom';
 
 
