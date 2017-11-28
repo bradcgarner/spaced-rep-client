@@ -1,5 +1,6 @@
 import 'whatwg-fetch';
 import { REACT_APP_BASE_URL } from '../config'
+import {SubmissionError} from 'redux-form';
 
 export const LOAD_USER = 'LOAD_USER';
 export const loadUser = (user) => ({
@@ -46,7 +47,24 @@ export const testLoadAllUsers = () => dispatch => {
   })
 }
 
-export const GO_TO_SIGNUP = 'GO_TO_SIGNUP';
-export const goToSignup = () => ({
-  type: GO_TO_SIGNUP
-})
+export const registerUser = user => dispatch => {
+  return fetch(`${REACT_APP_BASE_URL}/api/users`, {
+      method: 'POST',
+      headers: {
+          'content-type': 'application/json'
+      },
+      body: JSON.stringify(user)
+  })
+      .then(res => res.json())
+      .catch(err => {
+          const {reason, message, location} = err;
+          if (reason === 'ValidationError') {
+              // Convert ValidationErrors into SubmissionErrors for Redux Form
+              return Promise.reject(
+                  new SubmissionError({
+                      [location]: message
+                  })
+              );
+          }
+      });
+};
