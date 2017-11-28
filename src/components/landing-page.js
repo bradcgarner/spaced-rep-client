@@ -1,14 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions/display.js'
+import * as actionsDisplay from '../actions/display'
+import * as actionsUser from '../actions/user'
 import {Link} from 'react-router-dom';
 
 
 export class LandingPage extends React.Component {
 
 handleSignup(){
-  this.props.dispatch(actions.goToSignup())
+  this.props.dispatch(actionsDisplay.goToSignup())
   console.log('im working')
+}
+
+handleLogin(){
+  this.props.dispatch(actionsDisplay.goToLogin())
+  console.log('im loggin in')
 }
 
   render() {
@@ -21,7 +27,7 @@ handleSignup(){
           <Link to="/signup" onClick={() => this.handleSignup()}>Sign Up</Link>
            </li>
           <li>
-            Login
+          <Link to="/login" onClick={() => this.handleLogin()}>Log In</Link>
           </li>
         </ul>
       </div>

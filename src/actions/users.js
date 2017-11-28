@@ -1,6 +1,7 @@
 import 'whatwg-fetch';
 import { REACT_APP_BASE_URL } from '../config'
 import {SubmissionError} from 'redux-form';
+import * as actionsDisplay from './display';
 
 export const LOAD_USER = 'LOAD_USER';
 export const loadUser = (user) => ({
@@ -8,7 +9,10 @@ export const loadUser = (user) => ({
   firstName: user.firstName,
   lastName: user.lastName,
   username: user.username,
-  authToken: user.authToken
+  authToken: user.authToken,
+  loggedIn: true,
+  questions: user.questions,
+  questionHead: user.questionHead
 });
 
 export const GET_ALL_USERS = 'GET_ALL_USERS';
@@ -56,6 +60,37 @@ export const registerUser = user => dispatch => {
       body: JSON.stringify(user)
   })
       .then(res => res.json())
+      .catch(err => {
+          const {reason, message, location} = err;
+          if (reason === 'ValidationError') {
+              // Convert ValidationErrors into SubmissionErrors for Redux Form
+              return Promise.reject(
+                  new SubmissionError({
+                      [location]: message
+                  })
+              );
+          }
+      });
+};
+
+export const login = user => dispatch => {
+  const url = `${REACT_APP_BASE_URL}/api/auth/login`;
+  const auth = `${user.username}:${user.password}`; // u & pw as string
+  const headers = {
+    "Authorization": "Basic " + btoa(auth), // base64 encryption
+    "x-requested-with": "xhr"
+  }; 
+  const init = { 
+    method: 'POST',
+    headers
+  };
+  return fetch(url,init)
+      .then(user => {
+        return dispatch(loadUser(user));
+      })
+      .then(()=>{
+        return dispatch(actionsDisplay.goToQuestions())        
+      })
       .catch(err => {
           const {reason, message, location} = err;
           if (reason === 'ValidationError') {
