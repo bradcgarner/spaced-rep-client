@@ -84,11 +84,17 @@ export const login = user => dispatch => {
     method: 'POST',
     headers
   };
+  console.log('log in init',init)
   return fetch(url,init)
       .then(user => {
+        return user.json()
+      })
+      .then(user=>{
+        console.log('returned user', user)
         return dispatch(loadUser(user));
       })
       .then(()=>{
+        console.log('go to questions');
         return dispatch(actionsDisplay.goToQuestions())        
       })
       .catch(err => {
