@@ -9,16 +9,16 @@ import * as actionsUsers from '../actions/users.js'
 
 export class QuestionsPage extends React.Component {
 
-  // handleSubmit(){
-  //   console.log(value)
-  //   // for signed in uses 
-  // }
+  answerQuestions(value){
+    console.log(value.answer)
+    this.props.dispatch(actionsUsers.answerQuestions(value.answer, this.props.users.questions, this.props.users.questionHead))
+  }
 
   render() {
     return (
       <div className='login'>
         <p>What does {this.props.users.questions[this.props.users.questionHead].brit} mean in English?</p>
-        <form onSubmit={this.props.handleSubmit(values => this.handleSignup(values))}>
+        <form onSubmit={this.props.handleSubmit(value => this.answerQuestions(value))}>
           <Field component='input' type='text' name='answer' id='answer' placeholder='answer' required/>
           <button type='submit' className="Signup">Submit</button>
         </form>

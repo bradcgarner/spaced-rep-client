@@ -34,7 +34,7 @@ const scoreAnswer = (value, questionObject) => {
 
 const reposition = (questionsArray, questionCurrent, questionCurrentIndex, questionPriorIndex) => {
   // array is the array from user.questions (state), so do not mutate
-  array = [...questionsArray];
+  const array = [...questionsArray];
   // questionCurrent is what we just answered
   // prior >>> current >>>> next  ====>>>  prior >>> next (take current out of the mix)
   array[questionPriorIndex].nextIndex = questionCurrent.nextIndex;
@@ -43,15 +43,6 @@ const reposition = (questionsArray, questionCurrent, questionCurrentIndex, quest
   const nextIndex = questionCurrent.nextIndex;
   const questionNext = array[nextIndex]
   
-  /* very simple, ordered array (no next pointers)
-    [ 0 , 1 , 1 , 1 , 2 , 3 , 4 , 4 , 5 , 6 ]
-                  loopCurrent
-                  loopCurrentIndex = 3
-                      loopNextIndex = 4
-                      loopNext = 2
-                  score = 2
-                  while 2 >= 2 ... true ... keep going
-  */
 
   // initialize loop
   let loopCurrent = questionNext;
