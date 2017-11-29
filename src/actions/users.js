@@ -24,33 +24,6 @@ export const getAllUsers = () => ({
   authToken: 'user.authToken'
 });
 
-export const testLoadAllUsers = () => dispatch => {
-  const url = `${REACT_APP_BASE_URL}/api/users`;
-  const headers = {
-    "x-requested-with": "xhr"
-  }; 
-  const init = { 
-    method: 'GET',
-    headers
-  };
-  let fetchedUser;
-  console.log('init', init);
-  return fetch(url, init)    
-  .then(res=>{
-    if (!res.ok) { 
-      return Promise.reject(res.statusText);
-    }
-    return res.json();
-  })
-  .then(user=>{
-    dispatch(loadUser(user[0]));    
-    console.log('user returned at login', user);    
-  })
-  .catch(error => {
-   console.log(error);
-  })
-}
-
 export const registerUser = user => dispatch => {
   return fetch(`${REACT_APP_BASE_URL}/api/users`, {
       method: 'POST',
@@ -109,3 +82,33 @@ export const login = user => dispatch => {
           }
       });
 };
+export const FETCH_AND_SAVE_QUESTIONS_SUCCESS = 'FETCH_AND_SAVE_QUESTIONS_SUCCESS';
+export const fetchAndSaveQuestionSuccess = (questions) => ({
+  type: FETCH_AND_SAVE_QUESTIONS_SUCCESS,
+  questions
+});
+
+export const fetchAndSaveQuestions = () => dispatch => {
+  const url = `${REACT_APP_BASE_URL}/api/questions`;
+  const headers = {
+    "x-requested-with": "xhr"
+  }; 
+  const init = { 
+    method: 'GET',
+    headers
+  };
+  let fetchedUser;
+  return fetch(url, init)    
+  .then(res=>{
+    if (!res.ok) { 
+      return Promise.reject(res.statusText);
+    }
+    return res.json();
+  })
+  .then(questions=>{
+    dispatch(fetchAndSaveQuestionSuccess(questions))      
+  })
+  .catch(error => {
+   console.log(error);
+  })
+}

@@ -17,7 +17,7 @@ export class QuestionsPage extends React.Component {
   render() {
     return (
       <div className='login'>
-        <p>What does {this.props.question} mean in English?</p>
+        <p>What does {this.props.users.questions[this.props.users.questionHead].brit} mean in English?</p>
         <form onSubmit={this.props.handleSubmit(values => this.handleSignup(values))}>
           <Field component='input' type='text' name='answer' id='answer' placeholder='answer' required/>
           <button type='submit' className="Signup">Submit</button>

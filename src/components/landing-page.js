@@ -3,9 +3,15 @@ import { connect } from 'react-redux';
 import * as actionsDisplay from '../actions/display'
 import * as actionsUser from '../actions/users'
 import {Link} from 'react-router-dom';
+import {Redirect} from 'react-router';
 
 
 export class LandingPage extends React.Component {
+
+getStarted(){
+    this.props.dispatch(actionsUser.fetchAndSaveQuestions())
+    .then(() => this.props.history.push('/questions'))
+}
 
 handleSignup(){
   this.props.dispatch(actionsDisplay.goToSignup())
@@ -21,7 +27,7 @@ handleLogin(){
     return (
       <div>
         <p>This is a British to U.S. learning application. Click "Get Started" below to begin!</p>
-        <button>Get Started</button>
+        <button onClick={() => this.getStarted()}>Get Started</button>
         <ul>
           <li>
           <Link to="/signup" onClick={() => this.handleSignup()}>Sign Up</Link>

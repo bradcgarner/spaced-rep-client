@@ -10,20 +10,20 @@
 // ​
 // User answers question
 
-const scoreAnswer = (questionObject) => {
+const scoreAnswer = (value, questionObject) => {
   const correct = 2;
   const incorrect = -1;
   const maxRange = 10;
-  const minRange = ;
+  const minRange = 1;
   let score;
-  if (questionObject.brit === questionObject.us) {
+  if (value === questionObject.us) {
     if (questionObject.score + correct <= maxRange ) {
       score = questionObject.score + correct;       
     } else {
       score = maxRange;
     }
   } else {
-    if (questionObject.score + incorrect >- minRange ) {
+    if (questionObject.score + incorrect >= minRange ) {
       score = questionObject.score + incorrect;       
     } else {
       score = minRange;
