@@ -12,6 +12,7 @@ export class QuestionsPage extends React.Component {
   answerQuestions(value){
     console.log(value.answer)
     this.props.dispatch(actionsUsers.answerQuestions(value.answer, this.props.users.questions, this.props.users.questionHead))
+    this.props.reset()
   }
 
   render() {
