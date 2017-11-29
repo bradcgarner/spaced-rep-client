@@ -32,10 +32,11 @@ const scoreAnswer = (questionObject) => {
   return score;
 };
 
-// this mutates the array upon which it is called
-const reposition = (array, questionCurrent, questionCurrentIndex, questionPriorIndex) => {
+const reposition = (questionsArray, questionCurrent, questionCurrentIndex, questionPriorIndex) => {
+  // array is the array from user.questions (state), so do not mutate
+  array = [...questionsArray];
   // questionCurrent is what we just answered
-  // both prior question and current question point to same next (for now)
+  // prior >>> current >>>> next  ====>>>  prior >>> next (take current out of the mix)
   array[questionPriorIndex].nextIndex = questionCurrent.nextIndex;
   // consts below are used after function completes
   const score = questionCurrent.score;
@@ -52,17 +53,19 @@ const reposition = (array, questionCurrent, questionCurrentIndex, questionPriorI
                   while 2 >= 2 ... true ... keep going
   */
 
+  // initialize loop
   let loopCurrent = questionNext;
   let loopNextIndex = loopCurrent.nextIndex;
   let loopNext = loopNextIndex ? array[loopNextIndex] : null ; // these ternaries are to prevent errors in loop statement
   let loopNextScore = loopNext ? loopNext.score : 999 ;
-  
+  // loop thru and find slot at end of matching values, i.e. if we have a 2, find last 2, then stop
   while ( score >= loopNextScore || loopNext ) {
     loopNextIndex = loopCurrent.nextIndex;
     loopCurrent = array[loopNextIndex];
     loopNext = loopNextIndex ? array[loopNextIndex] : null ; // these ternaries are to prevent errors in loop statement
     loopNextScore = loopNext ? loopNext.score : 999 ;
   }
+  // once loop completes, insert current question in that slot
   questionCurrent.nextIndex = loopNextIndex;
   loopCurrent.nextIndex = questionCurrentIndex;
 }
