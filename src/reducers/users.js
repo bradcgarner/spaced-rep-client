@@ -22,6 +22,13 @@ export const reducer = (state = initialState, action) => {
       loggedIn: false
     })
   }
+  else if (action.type === actions.UPDATE_SCORE) {
+    return Object.assign({}, state, {
+      questions: action.questions,
+      questionHead: action.questionHead
+    })
+  }
+  
   else {
     return state;
   }

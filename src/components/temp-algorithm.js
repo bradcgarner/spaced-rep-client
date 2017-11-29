@@ -32,12 +32,10 @@ const scoreAnswer = (value, questionObject) => {
   return score;
 };
 
-const reposition = (questionsArray, questionCurrent, questionCurrentIndex, questionPriorIndex) => {
+const reposition = (questionsArray, questionCurrent, questionCurrentIndex) => {
   // array is the array from user.questions (state), so do not mutate
   const array = [...questionsArray];
   // questionCurrent is what we just answered
-  // prior >>> current >>>> next  ====>>>  prior >>> next (take current out of the mix)
-  array[questionPriorIndex].nextIndex = questionCurrent.nextIndex;
   // consts below are used after function completes
   const score = questionCurrent.score;
   const nextIndex = questionCurrent.nextIndex;

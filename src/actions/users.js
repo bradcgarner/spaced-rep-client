@@ -113,12 +113,49 @@ export const fetchAndSaveQuestions = () => dispatch => {
   })
 }
 
+export const UPDATE_SCORE = 'UPDATE_SCORE';
+export const updateScore = (user) => ({
+  type: UPDATE_SCORE,
+  questions: user.questions,
+  questionHead: user.questionHead
+});
+
  export const answerQuestions = (value, questions, questionHead) => dispatch => {
    const newQuestions = [...questions]
     console.log(newQuestions)
     newQuestions[questionHead].score = scoreAnswer(value, newQuestions[questionHead])
     console.log(newQuestions[questionHead].score);
+    const newQuestionHead = newQuestions[questionHead].nextIndex
+    const updatedQuestions = {questions: newQuestions, questionHead: newQuestionHead}
+    dispatch(updateScore(updatedQuestions));
+    // push updatedQuestions object to the server. 
+    // reposition(newQuestions, newQuestions[questionHead], questionHead);
  }
+
+ const reposition = (array, questionCurrent, questionCurrentIndex) => {
+  // questionCurrent is what we just answered
+  // consts below are used after function completes
+  const score = questionCurrent.score;
+  const nextIndex = questionCurrent.nextIndex;
+  const questionNext = array[nextIndex]
+  
+
+  // initialize loop
+  let loopCurrent = questionNext;
+  let loopNextIndex = loopCurrent.nextIndex;
+  let loopNext = loopNextIndex ? array[loopNextIndex] : null ; // these ternaries are to prevent errors in loop statement
+  let loopNextScore = loopNext ? loopNext.score : 999 ;
+  // loop thru and find slot at end of matching values, i.e. if we have a 2, find last 2, then stop
+  while ( score >= loopNextScore || loopNext ) {
+    loopNextIndex = loopCurrent.nextIndex;
+    loopCurrent = array[loopNextIndex];
+    loopNext = loopNextIndex ? array[loopNextIndex] : null ; // these ternaries are to prevent errors in loop statement
+    loopNextScore = loopNext ? loopNext.score : 999 ;
+  }
+  // once loop completes, insert current question in that slot
+  questionCurrent.nextIndex = loopNextIndex;
+  loopCurrent.nextIndex = questionCurrentIndex;
+}
 
 const scoreAnswer = (value, questionObject) => {
   const correct = 2;
@@ -141,3 +178,4 @@ const scoreAnswer = (value, questionObject) => {
   }
   return score;
 };
+
