@@ -9,10 +9,10 @@ import * as actionsUsers from '../actions/users.js'
 
 export class QuestionsPage extends React.Component {
 
-  handleSubmit(){
-    console.log(value)
-    // for signed in uses 
-  }
+  // handleSubmit(){
+  //   console.log(value)
+  //   // for signed in uses 
+  // }
 
   render() {
     return (
