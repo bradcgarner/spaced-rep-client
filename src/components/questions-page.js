@@ -9,25 +9,21 @@ import * as actionsUsers from '../actions/users.js'
 
 export class QuestionsPage extends React.Component {
 
-  handleSignup(values) {
-    console.log(values)
-    const {username, password, firstName, lastName} = values;
-    const user = {username, password, firstName, lastName}
-    this.props.dispatch(actionsUsers.registerUser(user))
-    console.log(user);
+  handleSubmit(){
+    console.log(value)
+    // for signed in uses 
   }
 
   render() {
     return (
       <div className='login'>
-        <p>QUESTIONS PAGE</p>
+        <p>What does {this.props.question} mean in English?</p>
         <form onSubmit={this.props.handleSubmit(values => this.handleSignup(values))}>
-          <Field component='input' type='text' name='firstName' id='firstName' placeholder='first name' required/>
-          <Field component='input' type='text' name='lastName' id='lastName' placeholder='last name' required/>
-          <Field component='input' type='text' name='username' id='username' placeholder='username' required/>
-          <Field component='input' type='password' name='password' id='password' placeholder='password' required/>
-          <button type='submit' className="Signup">Sign Up</button>
+          <Field component='input' type='text' name='answer' id='answer' placeholder='answer' required/>
+          <button type='submit' className="Signup">Submit</button>
         </form>
+        <p>Create an account to save your progress</p>
+        <p>Already have an account? Login here.</p>
       </div>
     )
   }
