@@ -35,7 +35,8 @@ export class SignupPage extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  view: state.view
+  display: state.display,
+  users: state.users
 });
 
 export default compose(

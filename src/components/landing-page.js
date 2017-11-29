@@ -37,7 +37,8 @@ handleLogin(){
 }
 
 const mapStateToProps = state => ({
-  view: state.view
+  display: state.display,
+  users: state.users
 });
 
 export default connect(mapStateToProps)(LandingPage);

@@ -20,6 +20,7 @@ export class QuestionsPage extends React.Component {
   render() {
     return (
       <div className='login'>
+        <p>QUESTIONS PAGE</p>
         <form onSubmit={this.props.handleSubmit(values => this.handleSignup(values))}>
           <Field component='input' type='text' name='firstName' id='firstName' placeholder='first name' required/>
           <Field component='input' type='text' name='lastName' id='lastName' placeholder='last name' required/>
@@ -34,7 +35,8 @@ export class QuestionsPage extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  view: state.view
+  display: state.display,
+  users: state.users
 });
 
 export default compose(
