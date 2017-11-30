@@ -168,14 +168,14 @@ const scoreAnswer = (value, questionObject) => {
 export const fetchAndSaveAnswers = (user, questions) => {
   const url = `${REACT_APP_BASE_URL}/api/users/${user.id}/questions`;
   const headers = {
-    "x-requested-with": "xhr",
     'content-type': 'application/json',
     "Authorization": `Bearer ${user.authToken}`, 
   }; 
+  console.log("fASA: user = ", user)
   const init = { 
     method: 'PUT',
     headers,
-    body: JSON.stringify(questions)
+    body: JSON.stringify({questions, questionHead: user.questionHead}) 
   };
   console.log('url at save answers',url);
   console.log('init at save answers',init);
