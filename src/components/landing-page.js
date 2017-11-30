@@ -9,8 +9,9 @@ import {Redirect} from 'react-router';
 export class LandingPage extends React.Component {
 
 getStarted(){
-    this.props.dispatch(actionsUser.fetchAndSaveQuestions())
-    .then(() => this.props.history.push('/questions'))
+  console.log('GET STARTED COMING SOON!!!')
+    // this.props.dispatch(actionsUser.fetchAndSaveQuestions())
+    // .then(() => this.props.history.push('/questions'))
 }
 
 handleSignup(){
