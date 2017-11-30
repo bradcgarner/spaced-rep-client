@@ -11,7 +11,7 @@ export class QuestionsPage extends React.Component {
 
   answerQuestions(value){
     console.log(value.answer)
-    this.props.dispatch(actionsUsers.answerQuestion = (
+    this.props.dispatch(actionsUsers.answerQuestion(
       this.props.users.id, 
       this.props.users.authToken,
       value.answer, 
@@ -22,7 +22,7 @@ export class QuestionsPage extends React.Component {
 
 
   render() {
-    console.log(this.props.question)
+    console.log('this.props.question',this.props.question)
     const brit = this.props.question.question.brit || ''
     const us = this.props.question.question.us || ''
     return (

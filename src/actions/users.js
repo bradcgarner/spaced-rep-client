@@ -79,6 +79,7 @@ export const login = user => dispatch => {
 };
 
  export const answerQuestion = (userId, authToken, answer, question, questionHead) => dispatch => {
+  console.log('userId, authToken, answer, question, questionHead',userId, authToken, answer, question, questionHead)
   const url = `${REACT_APP_BASE_URL}/api/users/${userId}/questions`;
   const headers = {
     "x-requested-with": "xhr",
@@ -104,9 +105,12 @@ export const login = user => dispatch => {
       console.log('!ok res.statusText', res.statusText)
       return Promise.reject(res.statusText);
     }
-    console.log('ok res.json',res.json)
-    return dispatch(actionsQuestion.loadQuestion(res)); // res should be {question, questionHead}
-      })
+    return res.json();
+  })
+  .then(question=>{
+  console.log('question',question)
+  return dispatch(actionsQuestion.loadQuestion(question.questionHead, question.question)); // res should be {question, questionHead}
+  })
   .catch(error => {
    console.log(error);
   })
