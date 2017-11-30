@@ -177,13 +177,16 @@ export const fetchAndSaveAnswers = (user, questions) => {
     headers,
     body: JSON.stringify(questions)
   };
-  console.log(init, 'init at save answers');
+  console.log('url at save answers',url);
+  console.log('init at save answers',init);
   return fetch(url, init)    
   .then(res=>{
-    console.log(res)
+    console.log('response from fetch',res)
     if (!res.ok) { 
+      console.log('!ok res.statusText', res.statusText)
       return Promise.reject(res.statusText);
     }
+    console.log('ok res.json',res.json)
     return res.json();
   })
   .catch(error => {
