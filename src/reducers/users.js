@@ -8,6 +8,7 @@ const initialState = {
   loggedIn: false,
   questions: [],
   questionHead: 0,
+  id: null
 }
 
 export const reducer = (state = initialState, action) => {

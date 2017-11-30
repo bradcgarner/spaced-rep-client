@@ -12,7 +12,8 @@ export const loadUser = (user) => ({
   authToken: user.authToken,
   loggedIn: true,
   questions: user.questions,
-  questionHead: user.questionHead
+  questionHead: user.questionHead,
+  id: user.id
 });
 
 export const GET_ALL_USERS = 'GET_ALL_USERS';
@@ -120,8 +121,9 @@ export const updateScore = (user) => ({
   questionHead: user.questionHead,
 });
 
- export const answerQuestions = (value, questions, questionHead) => dispatch => {
-   const newQuestions = [...questions]
+ export const answerQuestions = (value, user) => dispatch => {
+   const newQuestions = [...user.questions]
+   const questionHead = user.questionHead
    const newQuestionHead = newQuestions[questionHead].nextIndex
     console.log(newQuestions)
     newQuestions[questionHead].score = scoreAnswer(value, newQuestions[questionHead])
@@ -129,6 +131,7 @@ export const updateScore = (user) => ({
     reposition(newQuestions, newQuestions[questionHead], questionHead);
     const updatedQuestions = {questions: newQuestions, questionHead: newQuestionHead}
     dispatch(updateScore(updatedQuestions));
+    if (user.loggedIn) fetchAndSaveAnswers(user, updatedQuestions);
     // push updatedQuestions object to the server. 
  }
 
@@ -161,3 +164,29 @@ const scoreAnswer = (value, questionObject) => {
   return score;
 };
 
+
+export const fetchAndSaveAnswers = (user, questions) => {
+  const url = `${REACT_APP_BASE_URL}/api/users/${user.id}/questions`;
+  const headers = {
+    "x-requested-with": "xhr",
+    'content-type': 'application/json',
+    "Authorization": `Bearer ${user.authToken}`, 
+  }; 
+  const init = { 
+    method: 'PUT',
+    headers,
+    body: JSON.stringify(questions)
+  };
+  console.log(init, 'init at save answers');
+  return fetch(url, init)    
+  .then(res=>{
+    console.log(res)
+    if (!res.ok) { 
+      return Promise.reject(res.statusText);
+    }
+    return res.json();
+  })
+  .catch(error => {
+   console.log(error);
+  })
+}
