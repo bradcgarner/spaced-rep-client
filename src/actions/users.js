@@ -13,13 +13,14 @@ export const loadUser = (user) => ({
   authToken: user.authToken,
   loggedIn: true,
   id: user.id,
-  totalScore: user.totalScore
+  totalScore: user.totalScore,
 });
 
 export const UPDATE_SCORE = 'UPDATE_SCORE';
-export const updateScore = (totalScore) => ({
+export const updateScore = (totalScore, right) => ({
   type: UPDATE_SCORE,
-  totalScore
+  totalScore,
+  right
 });
 
 
@@ -118,7 +119,8 @@ export const login = user => dispatch => {
   .then(question=>{
     console.log('question',question)
     dispatch(updateScore(
-      question.totalScore
+      question.totalScore,
+      question.right
     ))
     return dispatch(actionsQuestion.answerQuestion(
       question.questionHeadNext, 

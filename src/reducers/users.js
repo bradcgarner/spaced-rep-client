@@ -7,7 +7,8 @@ const initialState = {
   authToken: 'none',
   loggedIn: false,
   id: null,
-  totalScore: 0
+  totalScore: 0,
+  right: false
 }
 
 export const reducer = (state = initialState, action) => {
