@@ -109,8 +109,12 @@ export const login = user => dispatch => {
     return res.json();
   })
   .then(question=>{
-  console.log('question',question)
-  return dispatch(actionsQuestion.loadQuestion(question.questionHead, question.question)); // res should be {question, questionHead}
+    console.log('question',question)
+    return dispatch(actionsQuestion.answerQuestion(
+      question.questionHeadNext, 
+      question.questionNext,
+      question.scoredQuestion
+    )); // res should be {question, questionHead}
   })
   .catch(error => {
    console.log(error);
