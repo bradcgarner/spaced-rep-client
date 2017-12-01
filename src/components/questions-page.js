@@ -73,7 +73,7 @@ export class QuestionsPage extends React.Component {
       }
 
       let guestMessage;
-      if (this.props.users.loggedIn) {
+      if (!this.props.users.loggedIn) {
         guestMessage = <div>
           <p>Create an account to save your progress</p>
           <p>Already have an account? Login here.</p> 

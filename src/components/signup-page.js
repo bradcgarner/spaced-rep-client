@@ -22,6 +22,8 @@ export class SignupPage extends React.Component {
   render() {
     return (
       <article className='signup'>
+        <h1 className="title">Across The Pond</h1>
+        <h3 className="subTitle">Log In</h3>
         <form onSubmit={this.props.handleSubmit(values => this.handleSignup(values))}>
           <Field component='input' type='text' name='firstName' id='firstName' placeholder='first name' required/>
           <Field component='input' type='text' name='lastName' id='lastName' placeholder='last name' required/>

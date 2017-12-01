@@ -25,6 +25,8 @@ export class LoginPage extends React.Component {
   render() {
     return (
       <article className='login-page'>
+        <h1 className="title">Across The Pond</h1>
+        <h3 className="subTitle">Log In</h3>
         <form onSubmit={this.props.handleSubmit(values => this.handleLogin(values))}>
           <Field component='input' type='text' name='username' id='username' placeholder='username' required/>
           <Field component='input' type='password' name='password' id='password' placeholder='password' required/>
