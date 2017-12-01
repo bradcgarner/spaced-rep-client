@@ -26,18 +26,22 @@ handleLogin(){
 
   render() {
     return (
-      <div>
-        <p>This is a British to U.S. learning application. Click "Get Started" below to begin!</p>
-        <button onClick={() => this.getStarted()}>Get Started</button>
-        <ul>
-          <li>
-          <Link to="/signup" onClick={() => this.handleSignup()}>Sign Up</Link>
-           </li>
-          <li>
-          <Link to="/login" onClick={() => this.handleLogin()}>Log In</Link>
-          </li>
-        </ul>
-      </div>
+      <article className="landing-article">
+      <h1 className="title">Across The Pond</h1>
+        <h3 className="subTitle">This is a British to U.S. learning application. Click "Get Started" below to begin!</h3>
+        <div className="landingButtonContainer">
+          <button className="getStartedButton" onClick={() => this.getStarted()}>Get Started</button>
+          <ul>
+            <li>
+              <Link className="signUpButton" to="/signup" onClick={() => this.handleSignup()}>Sign Up</Link>
+            </li>
+            <li></li>
+            <li>
+              <Link className="logInButton" to="/login" onClick={() => this.handleLogin()}>Log In</Link>
+            </li>
+          </ul>
+        </div>
+      </article>
     )
   }
 

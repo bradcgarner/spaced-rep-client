@@ -24,13 +24,13 @@ export class LoginPage extends React.Component {
 
   render() {
     return (
-      <div className='login'>
+      <article className='login-page'>
         <form onSubmit={this.props.handleSubmit(values => this.handleLogin(values))}>
           <Field component='input' type='text' name='username' id='username' placeholder='username' required/>
           <Field component='input' type='password' name='password' id='password' placeholder='password' required/>
           <button type='submit' className="login">Log In</button>
         </form>
-      </div>
+      </article>
     )
   }
 }

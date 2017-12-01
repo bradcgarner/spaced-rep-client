@@ -21,7 +21,7 @@ export class SignupPage extends React.Component {
 
   render() {
     return (
-      <div className='login'>
+      <article className='signup'>
         <form onSubmit={this.props.handleSubmit(values => this.handleSignup(values))}>
           <Field component='input' type='text' name='firstName' id='firstName' placeholder='first name' required/>
           <Field component='input' type='text' name='lastName' id='lastName' placeholder='last name' required/>
@@ -29,7 +29,7 @@ export class SignupPage extends React.Component {
           <Field component='input' type='password' name='password' id='password' placeholder='password' required/>
           <button type='submit' className="Signup">Sign Up</button>
         </form>
-      </div>
+      </article>
     )
   }
 
