@@ -35,6 +35,42 @@ export class QuestionsPage extends React.Component {
     const buttonLabel = this.props.question.answered ? 'Next' : 'Submit' ;
     const theAnswer = this.props.question.answered ? this.props.question.questionScored.us : ' ~ ' ;
     const score = this.props.question.answered ? this.props.question.questionScored.score : this.props.question.question.score ;
+
+    let information;
+    if (this.props.users.username === "testing123") {information = 
+      <div>
+              <p>CURRENT: Answered = {this.props.question.answered}</p>  
+    <table>
+      <tr>
+        <th> </th>
+        <th>Brit</th>
+        <th>US</th>
+        <th>Score</th>
+        <th>Index</th>
+        <th>Next Index</th>
+      </tr>
+      <tr>
+        <td>Current</td>
+        <td>{brit}</td>
+        <td>{us}</td>
+        <td>{score}</td>
+        <td>{this.props.question.questionHead}</td>
+        <td>{this.props.question.question.nextIndex}</td>
+      </tr>
+      <tr>
+        <td>Next</td>
+        <td>{this.props.question.questionNext.brit}</td>
+        <td>{this.props.question.questionNext.us}</td>
+        <td>{this.props.question.questionNext.score}</td>
+        <td>{this.props.question.questionHeadNext}</td>
+        <td>{this.props.question.questionNext.nextIndex}</td>
+      </tr>
+      </table>
+      </div>}
+      else {
+        information = ''
+      }
+
     return (
       <div className='login'>
         <p>What does {brit} mean in English?</p>
@@ -44,34 +80,9 @@ export class QuestionsPage extends React.Component {
           <button type='submit' className="Signup">{buttonLabel}</button>
         </form>
         <p>Create an account to save your progress</p>
-        <p>Already have an account? Login here.</p>
-        <p>CURRENT: Answered = {this.props.question.answered}</p>
-        <table>
-        <tr>
-          <th> </th>
-          <th>Brit</th>
-          <th>US</th>
-          <th>Score</th>
-          <th>Index</th>
-          <th>Next Index</th>
-        </tr>
-        <tr>
-          <td>Current</td>
-          <td>{brit}</td>
-          <td>{us}</td>
-          <td>{score}</td>
-          <td>{this.props.question.questionHead}</td>
-          <td>{this.props.question.question.nextIndex}</td>
-        </tr>
-        <tr>
-          <td>Next</td>
-          <td>{this.props.question.questionNext.brit}</td>
-          <td>{this.props.question.questionNext.us}</td>
-          <td>{this.props.question.questionNext.score}</td>
-          <td>{this.props.question.questionHeadNext}</td>
-          <td>{this.props.question.questionNext.nextIndex}</td>
-        </tr>
-        </table>        
+        <p>Already have an account? Login here.</p> 
+       {information}
+       <p>Score = {this.props.users.totalScore}</p>
       </div>
     )
   }
@@ -88,3 +99,4 @@ export default compose(
   connect(mapStateToProps),
   reduxForm({ form: 'questions-page' })
 )(QuestionsPage);
+
