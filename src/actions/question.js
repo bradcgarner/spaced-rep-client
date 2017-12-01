@@ -8,4 +8,14 @@ export const loadQuestion = (questionHead, question) => ({
   type: LOAD_QUESTION,
   question,
   questionHead,
+  answered: false
+});
+
+export const ANSWER_QUESTION = 'ANSWER_QUESTION';
+export const answerQuestion = (questionHeadNext, questionNext, questionScored) => ({
+  type: ANSWER_QUESTION,
+  questionNext,
+  questionHeadNext,
+  questionScored,
+  answered: true
 });

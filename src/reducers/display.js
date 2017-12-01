@@ -1,7 +1,7 @@
 import * as actions from '../actions/display'
 
 const initialState = {
-  view: "landingPage"
+  view: 'landingPage'
 }
 
 export const reducer = (state = initialState, action) => {
