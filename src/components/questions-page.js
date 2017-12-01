@@ -9,50 +9,50 @@ import * as actionsQuestion from '../actions/question'
 
 export class QuestionsPage extends React.Component {
 
-  answerQuestion(value){
+  answerQuestion(value) {
     if (this.props.question.answered) {
       console.log('advance question')
       this.props.dispatch(actionsQuestion.loadQuestion(
         this.props.question.questionHeadNext,
         this.props.question.questionNext
-        ));
+      ));
       this.props.reset()
     } else {
       console.log(value.answer)
       this.props.dispatch(actionsUsers.answerQuestion(
-        this.props.users.id, 
+        this.props.users.id,
         this.props.users.authToken,
-        value.answer, 
-        this.props.question.question, 
+        value.answer,
+        this.props.question.question,
         this.props.question.questionHead));
     }
   };
 
   render() {
-    console.log('this.props.question',this.props.question)
+    console.log('this.props.question', this.props.question)
     const brit = this.props.question.question.brit || ''
     const us = this.props.question.question.us || ''
-    const buttonLabel = this.props.question.answered ? 'Next' : 'Submit' ;
-    const theAnswer = this.props.question.answered ? this.props.question.questionScored.us : ' ~ ' ;
-    const score = this.props.question.answered ? this.props.question.questionScored.score : this.props.question.question.score ;
+    const buttonLabel = this.props.question.answered ? 'Next' : 'Submit';
+    const theAnswer = this.props.question.answered ? this.props.question.questionScored.us : '';
+    const score = this.props.question.answered ? this.props.question.questionScored.score : this.props.question.question.score;
 
     let information;
     if (this.props.users.username === "testing123") {
-      information = 
+      information =
         <div>
-          <p>CURRENT: Answered = {this.props.question.answered}</p>  
+          <p>CURRENT: Answered = {this.props.question.answered}</p>
           <table>
             <tr>
               <th> </th>
               <th>Brit</th>
               <th>US</th>
               <th>Score</th>
-             <th>Index</th>
-             <th>Next Index</th>
+              <th>Index</th>
+              <th>Next Index</th>
             </tr>
             <tr>
               <td>Current</td>
-             <td>{brit}</td>
+              <td>{brit}</td>
               <td>{us}</td>
               <td>{score}</td>
               <td>{this.props.question.questionHead}</td>
@@ -68,21 +68,34 @@ export class QuestionsPage extends React.Component {
             </tr>
           </table>
         </div>
-      } else {
-        information = '';
-      }
+    } else {
+      information = '';
+    }
 
-      let guestMessage;
-      if (!this.props.users.loggedIn) {
-        guestMessage = <div>
-          <p>Create an account to save your progress</p>
-          <p>Already have an account? Login here.</p> 
-        </div>
-      } else {
-        guestMessage = '';
-      }
-    const answerCorrectClass = this.props.question.questionScored.right ? 'correct' : 'incorrect' ;
+    let guestMessage;
+    if (!this.props.users.loggedIn) {
+      guestMessage = <div>
+        <p>Create an account to save your progress</p>
+        <p>Already have an account? Login here.</p>
+      </div>
+    } else {
+      guestMessage = '';
+    }
+
+    let answer;
+    let rightOrWrong;
+    const answerCorrectClass = this.props.users.right ? 'correct' : 'incorrect' ;
     const answerClass = `answer ${answerCorrectClass}`;
+    
+    if (this.props.question.answered) {
+      answer = <p className={answerClass}>Answer = {theAnswer}</p>
+      if (this.props.users.right) {
+        rightOrWrong = <p>Correct!</p>
+      }
+      else {
+        rightOrWrong = <p>Wrong!</p>
+      }
+    }
 
     return (
       <article className='question-page'>
@@ -90,7 +103,8 @@ export class QuestionsPage extends React.Component {
           <p className="question">What does <span className="keyword">{brit}</span> mean in English?</p>
         </div>
         <div className="answerContainer">
-          <p className={answerClass}>{theAnswer}</p>
+          {rightOrWrong}
+          {answer}
         </div>
         <form className="questionForm" onSubmit={this.props.handleSubmit(value => this.answerQuestion(value))}>
           <Field component='input' type='text' name='answer' id='answer' placeholder='answer' required/>
@@ -100,6 +114,7 @@ export class QuestionsPage extends React.Component {
        {information}
        <p className="score">Score</p>
        <p className="scoreNumber">{this.props.users.totalScore}</p>
+
       </article>
     )
   }

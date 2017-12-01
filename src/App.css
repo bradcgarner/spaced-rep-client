@@ -154,10 +154,13 @@ input {
 }
 
 .answerContainer {
-  height: 20px;
+  height: 50px;
   margin-bottom: 15px;
 }
 
+.answerContainer p {
+  margin-bottom: 5px;
+}
 .correct {
   color: green;
 }
