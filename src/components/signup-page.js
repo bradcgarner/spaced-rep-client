@@ -21,20 +21,19 @@ export class SignupPage extends React.Component {
 
   render() {
     return (
-      <article className='signup'>
+      <article className='signup-page'>
         <h1 className="title">Across The Pond</h1>
         <h3 className="subTitle">Log In</h3>
-        <form onSubmit={this.props.handleSubmit(values => this.handleSignup(values))}>
+        <form className="signupForm" onSubmit={this.props.handleSubmit(values => this.handleSignup(values))}>
           <Field component='input' type='text' name='firstName' id='firstName' placeholder='first name' required/>
           <Field component='input' type='text' name='lastName' id='lastName' placeholder='last name' required/>
           <Field component='input' type='text' name='username' id='username' placeholder='username' required/>
           <Field component='input' type='password' name='password' id='password' placeholder='password' required/>
-          <button type='submit' className="Signup">Sign Up</button>
+          <button type='submit' className="mainButton">Sign Up</button>
         </form>
       </article>
     )
   }
-
 }
 
 const mapStateToProps = state => ({

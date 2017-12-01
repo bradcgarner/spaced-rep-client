@@ -81,18 +81,25 @@ export class QuestionsPage extends React.Component {
       } else {
         guestMessage = '';
       }
+    const answerCorrectClass = this.props.question.questionScored.right ? 'correct' : 'incorrect' ;
+    const answerClass = `answer ${answerCorrectClass}`;
 
     return (
-      <article className='question'>
-        <p>What does {brit} mean in English?</p>
-        <p>{theAnswer}</p>
-        <form onSubmit={this.props.handleSubmit(value => this.answerQuestion(value))}>
+      <article className='question-page'>
+        <div className="questionContainer">
+          <p className="question">What does <span className="keyword">{brit}</span> mean in English?</p>
+        </div>
+        <div className="answerContainer">
+          <p className={answerClass}>{theAnswer}</p>
+        </div>
+        <form className="questionForm" onSubmit={this.props.handleSubmit(value => this.answerQuestion(value))}>
           <Field component='input' type='text' name='answer' id='answer' placeholder='answer' required/>
-          <button type='submit' className="Signup">{buttonLabel}</button>
+          <button type='submit' className="mainButton">{buttonLabel}</button>
         </form>
         {guestMessage}
        {information}
-       <p>Score = {this.props.users.totalScore}</p>
+       <p className="score">Score</p>
+       <p className="scoreNumber">{this.props.users.totalScore}</p>
       </article>
     )
   }

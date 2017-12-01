@@ -27,10 +27,10 @@ export class LoginPage extends React.Component {
       <article className='login-page'>
         <h1 className="title">Across The Pond</h1>
         <h3 className="subTitle">Log In</h3>
-        <form onSubmit={this.props.handleSubmit(values => this.handleLogin(values))}>
+        <form className="loginForm" onSubmit={this.props.handleSubmit(values => this.handleLogin(values))}>
           <Field component='input' type='text' name='username' id='username' placeholder='username' required/>
           <Field component='input' type='password' name='password' id='password' placeholder='password' required/>
-          <button type='submit' className="login">Log In</button>
+          <button type='submit' className="mainButton">Log In</button>
         </form>
       </article>
     )

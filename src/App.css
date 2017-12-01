@@ -70,18 +70,19 @@ article {
   align-items: flex-start;
 }
 
-.landingArticle {
+.landing-page {
   align-items: center;
 }
 
 .title {
   width: 100%;
-  font-size: 24px;
+  font-size: 28px;
   text-align: center;
   margin-bottom: 20px;
 }
 .subTitle {
-  font-size: 18px;
+  width: 100%;
+  font-size: 20px;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -93,7 +94,7 @@ article {
   justify-content: flex-start;
   align-items: center;
 }
-.getStartedButton, .signUpButton, .logInButton {
+.mainButton, .signUpButton, .logInButton {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -104,8 +105,11 @@ article {
   margin-top: 15px;
   margin-bottom: 15px;
 }
-.getStartedButton {
-
+.mainButton {
+  width: 200px;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 5px;
 }
 .signUpButton, .logInButton {
   padding: 10px;
@@ -113,6 +117,66 @@ article {
 .signUpButton a, .logInButton a {
   text-align: center;
 }
+.loginForm, .signupForm, .questionForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+input {
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 5px;
+  width: 200px;
+  margin-bottom: 15px;
+}
+
+.keyword {
+  font-size: 18px;
+  color: blue;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.questionContainer, .answerContainer {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.questionContainer, .answerContainer {
+  height: 50px;
+}
+
+.answerContainer {
+  height: 20px;
+  margin-bottom: 15px;
+}
+
+.correct {
+  color: green;
+}
+.incorrect {
+  color: red;
+}
+.score, .scoreNumber {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.scoreNumber {
+  padding: 15px;
+  font-size: 50px;
+}
+
 
 @media screen and (min-width: 576px) {
   

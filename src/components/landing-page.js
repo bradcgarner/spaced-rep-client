@@ -26,10 +26,10 @@ handleLogin(){
 
   render() {
     const getStartedLabel = this.props.users.username === 'Satan' ? 'Click "Get Started" below to begin!' : '' ;
-    const getStartedButton = this.props.users.username === 'Satan' ? <button className="getStartedButton" onClick={() => this.getStarted()}>Get Started</button> : '' ;
+    const getStartedButton = this.props.users.username === 'Satan' ? <button className="mainButton" onClick={() => this.getStarted()}>Get Started</button> : '' ;
     return (
-      <article className="landing-article">
-      <h1 className="title">Across The Pond</h1>
+      <article className="landing-page">
+        <h1 className="title">Across The Pond</h1>
         <h3 className="subTitle">This is a British to U.S. learning application. {getStartedLabel}</h3>
         <div className="landingButtonContainer">
           {getStartedButton}
