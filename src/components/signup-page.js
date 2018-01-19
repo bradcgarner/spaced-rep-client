@@ -10,13 +10,11 @@ import * as actionsUsers from '../actions/users.js'
 export class SignupPage extends React.Component {
 
   handleSignup(values) {
-    console.log(values)
     const {username, password, firstName, lastName} = values;
     const user = {username, password, firstName, lastName}
     this.props.dispatch(actionsUsers.registerUser(user))
     .then(() => this.props.dispatch(actionsUsers.login({username, password})))
     .then(() => this.props.history.push('/questions'));    
-    console.log(user);
   }
 
   render() {

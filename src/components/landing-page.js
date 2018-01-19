@@ -15,12 +15,10 @@ getStarted(){
 
 handleSignup(){
   this.props.dispatch(actionsDisplay.goToSignup())
-  console.log('im working')
 }
 
 handleLogin(){
   this.props.dispatch(actionsDisplay.goToLogin())
-  console.log('im loggin in')
 }
 
   render() {

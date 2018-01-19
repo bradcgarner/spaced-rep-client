@@ -9,17 +9,14 @@ import * as actionsUsers from '../actions/users.js'
 export class LoginPage extends React.Component {
 
   handleLogin(values) {
-    console.log(values)
     const {username, password} = values;
     const user = {username, password}
     this.props.dispatch(actionsUsers.login(user))
     .then(()=>{
-      console.log('view',this.props.view);
       if ( this.props.display.view === 'questionsPage') {
         this.props.history.push('/questions');      
       }
     });
-    console.log('user to log in',user);
   }
 
   render() {
