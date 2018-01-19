@@ -57,20 +57,16 @@ export const login = user => dispatch => {
     method: 'POST',
     headers
   };
-  console.log('log in init',init)
   return fetch(url,init)
       .then(user => {
         return user.json()
       })
       .then(user=>{  // user should return with initial question and questionHead
-        console.log('returned user', user)
         const { questionHead, question } = user;
-        console.log('questionHead, question',questionHead, question)
         dispatch(loadUser(user));
         return dispatch(actionsQuestion.loadQuestion( questionHead, question)); 
       })
       .then(()=>{
-        console.log('go to questions');
         return dispatch(actionsDisplay.goToQuestions())        
       })
       .catch(err => {
@@ -87,7 +83,6 @@ export const login = user => dispatch => {
 };
 
  export const answerQuestion = (userId, authToken, answer, question, questionHead) => dispatch => {
-  console.log('userId, authToken, answer, question, questionHead',userId, authToken, answer, question, questionHead)
   const url = `${REACT_APP_BASE_URL}/api/users/${userId}/questions`;
   const headers = {
     'content-type': 'application/json',
@@ -105,19 +100,14 @@ export const login = user => dispatch => {
     body: JSON.stringify(questionObject)
 
   };
-  console.log('url at save answers',url);
-  console.log('init at save answers',init);
   return fetch(url, init)    
   .then(res=>{
-    console.log('response from fetch',res)
     if (!res.ok) { 
-      console.log('!ok res.statusText', res.statusText)
       return Promise.reject(res.statusText);
     }
     return res.json();
   })
   .then(question=>{
-    console.log('question',question)
     dispatch(updateScore(
       question.totalScore,
       question.right
