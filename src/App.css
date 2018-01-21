@@ -125,6 +125,13 @@ article {
   align-items: center;
 }
 
+.demo-login, .demo-username, .demo-password {
+  text-align: center;
+  margin: auto;
+  width: 100%;
+  padding: 5px;
+}
+
 input {
   font-size: 18px;
   padding: 5px;

@@ -29,6 +29,8 @@ export class LoginPage extends React.Component {
           <Field component='input' type='password' name='password' id='password' placeholder='password' required/>
           <button type='submit' className="mainButton">Log In</button>
         </form>
+        <h4 className="demo-login">Demo Login</h4>
+        <p className="demo-username">username: <i>testuser100</i></p> <p className="demo-password">password: <i>testuser100</i></p>
       </article>
     )
   }
