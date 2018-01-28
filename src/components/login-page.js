@@ -30,7 +30,7 @@ export class LoginPage extends React.Component {
           <button type='submit' className="mainButton">Log In</button>
         </form>
         <h4 className="demo-login">Demo Login</h4>
-        <p className="demo-username">username: <i>testuser100</i></p> <p className="demo-password">password: <i>testuser100</i></p>
+        <p className="demo-username">username: <i>guestuser</i></p> <p className="demo-password">password: <i>guestuser</i></p>
       </article>
     )
   }

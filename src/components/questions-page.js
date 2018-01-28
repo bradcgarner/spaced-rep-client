@@ -20,7 +20,7 @@ export class QuestionsPage extends React.Component {
       this.props.dispatch(actionsUsers.answerQuestion(
         this.props.users.id,
         this.props.users.authToken,
-        value.answer,
+        value.answer.toLowerCase(),
         this.props.question.question,
         this.props.question.questionHead));
     }
