@@ -30,6 +30,11 @@ footer, header, hgroup, menu, nav, section {
   display: flex; }
 
 body {
+  background-image: url('flag.png');
+  background-size: 500px, 500px;
+  background-repeat: no-repeat;
+  background-position: center 2000%;
+  margin: auto;
   line-height: 1; }
 
 ol, ul, li {
