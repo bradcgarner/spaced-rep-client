@@ -6,13 +6,19 @@ const initialState = {
   username: 'none',
   authToken: 'none',
   loggedIn: false,
-  id: null
+  id: null,
+  totalScore: 0,
+  right: false
 }
 
 export const reducer = (state = initialState, action) => {
 
   if (action.type === actions.LOAD_USER) {
     return Object.assign({}, state, action);
+  }
+
+  else if (action.type === actions.UPDATE_SCORE) {
+    return Object.assign({}, state, action)
   }
 
   else {

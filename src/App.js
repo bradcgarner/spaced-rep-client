@@ -11,12 +11,12 @@ import QuestionsPage from './components/questions-page'
 export default function Layout() {
   return (
     <Router>
-      <div className="router">
+      <main className="main">
         <Route exact path="/" component={LandingPage}/>
         <Route path="/signup" component={SignupPage}/>
         <Route path="/login" component={LoginPage}/>
         <Route path="/questions" component={QuestionsPage}/>
-      </div>
+      </main>
     </Router>
   )
 }

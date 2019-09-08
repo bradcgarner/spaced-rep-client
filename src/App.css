@@ -1,28 +1,207 @@
-.App {
+/* @@@@@@@@@@@@@@  END VARIABLES - START RESET @@@@@@@@@@@@@@@@@@@@ */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 16px;
+  /* was 100% */
+  font-family: 'Oxygen', sans-serif;
+  /* Brad added */
+  /*font: inherit;*/
+  color: #52524e;
+  /* Brad added */
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: flex; }
+
+body {
+  background-image: url('flag.png');
+  background-size: 500px, 500px;
+  background-repeat: no-repeat;
+  background-position: center 2000%;
+  margin: auto;
+  line-height: 1; }
+
+ol, ul, li {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+* {
+  box-sizing: border-box;
+  /* Brad added */ }
+
+/* @@@@@@@@@@@@@@@@ END RESET - START GENERAL @@@@@@@@@@@@ */
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+article {
+  margin-top: 40px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.landing-page {
+  align-items: center;
+}
+
+.title {
+  width: 100%;
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.subTitle {
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.landingButtonContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.mainButton, .signUpButton, .logInButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100px;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.mainButton {
+  width: 200px;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 5px;
+}
+.signUpButton, .logInButton {
+  padding: 10px;
+}
+.signUpButton a, .logInButton a {
   text-align: center;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.loginForm, .signupForm, .questionForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.demo-login, .demo-username, .demo-password {
+  text-align: center;
+  margin: auto;
+  width: 100%;
+  padding: 5px;
 }
 
-.App-title {
-  font-size: 1.5em;
+input {
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 5px;
+  width: 200px;
+  margin-bottom: 15px;
 }
 
-.App-intro {
-  font-size: large;
+.keyword {
+  font-size: 18px;
+  color: blue;
+  font-style: italic;
+  font-weight: bold;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.questionContainer, .answerContainer {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.questionContainer, .answerContainer {
+  height: 50px;
+}
+
+.answerContainer {
+  height: 50px;
+  margin-bottom: 15px;
+}
+
+.answerContainer p {
+  margin-bottom: 5px;
+}
+.correct {
+  color: green;
+}
+.incorrect {
+  color: red;
+}
+.score, .scoreNumber {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.scoreNumber {
+  padding: 15px;
+  font-size: 50px;
+}
+
+
+@media screen and (min-width: 576px) {
+  
+}
+@media screen and (min-width: 768px) {
+  
+}
+@media screen and (min-width: 992px) {
+  
+}
+@media screen and (min-width: 1200px) {
+  
 }
